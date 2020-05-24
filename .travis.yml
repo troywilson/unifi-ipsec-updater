@@ -1,8 +1,11 @@
+os: linux
 dist: xenial
-sudo: required
+language: python
 
 env:
-  - IMAGE=unifi-ipsec-updater
+  global:
+    - IMAGE=unifi-ipsec-updater
+    - DOCKER_CLI_EXPERIMENTAL=enabled
 
 before_script:
   - if [ -z "$TRAVIS_TAG" ]; then
@@ -10,7 +13,10 @@ before_script:
     fi
 
 script:
-  - docker build
+  - docker buildx create --use
+  - docker buildx build
+    --progress plain
+    --platform=linux/amd64,linux/386,linux/arm64,linux/arm/v7,linux/arm/v6
     --tag ${DOCKER_USERNAME}/${IMAGE}:${TRAVIS_TAG}
     --tag ${DOCKER_USERNAME}/${IMAGE}:latest
     .
