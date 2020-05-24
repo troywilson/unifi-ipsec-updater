@@ -2,6 +2,8 @@ os: linux
 dist: xenial
 language: python
 
+if: tag IS present
+
 env:
   global:
     - IMAGE=unifi-ipsec-updater
