@@ -1,0 +1,26 @@
+dist: xenial
+sudo: required
+
+env:
+  - IMAGE=unifi-ipsec-updater
+
+before_script:
+  - if [ -z "$TRAVIS_TAG" ]; then
+      travis_terminate 0;
+    fi
+
+script:
+  - docker build
+    --tag ${DOCKER_USERNAME}/${IMAGE}:${TRAVIS_TAG}
+    --tag ${DOCKER_USERNAME}/${IMAGE}:latest
+    .
+
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push ${DOCKER_USERNAME}/${IMAGE}:${TRAVIS_TAG}
+  - docker push ${DOCKER_USERNAME}/${IMAGE}:latest
+
+notifications:
+  email: false
+  slack:
+    secure: "Erp9n4toG/3279E/cH/vxE5Me3rtNc3ZD8ihZ7VPntNNcq2dClJmMKdtiSSmgB+Nd4+JXAAVI8o0YQokjDU1SZrrr9KAfHU7b99EVXv/xs+OHyAU2odz8GReRZ4trRBhpztFhnXhKDYNaH6j0feEVtVXO6qeonj2Q/IClR2rOygMAR3y/iHfc6fjZDAl8wri9DQ95lTj4pnNO7j9Nwv/Yaudnfpa2AUeXAKmgIoLe1vm3oyvOiu5ndNcZTmt2iNKnBbxQ2es/7W6wzBmSleeq2cadg4HIbeu6EhxcRMc7aLAiUGZeRoI39+aGuA8rgCij6tGk+rYnG/DmLn4DvvMdaRXnN92H96BHlYgZcov8h+qI7j3SXkpYpP4wuMHM3Paw+yUj7P9t4mk5vaEzBUd/GxQoH0Q9t9/1Bm8Og2uHmVt1IYiz0J1NgtRp69aqSdEOLETP1e9RyL9U93jP3xMYxgrGWP/9EDeHNpwh7SElgC7ptR5pDQYL+KVumdpZ6y2MwhL21zWT7+cv6ukSuq/+JC7zXFQ5wrbvVAubHDkK7SmWPNX/eHDi+xcV8BvEEGA4WMYNsz1gxUsn4Cs/gwXJPi+WqKplYrMd6RXJArDSBgjD0GehWvFzo8GGxzaoOnF8EZmtBjLPvHw1xF/BNmoRNExKTGbbGUKMjYRbGF75ZQ="
