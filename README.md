@@ -1,4 +1,4 @@
-# Unifi ipsec updater
+# Unifi IPsec Updater
 
 [![Build Status](https://travis-ci.org/troywilson/unifi-ipsec-updater.svg?branch=master)](https://travis-ci.org/troywilson/unifi-ipsec-updater) [![Docker Pulls](https://img.shields.io/docker/pulls/troywilson/unifi-ipsec-updater.svg)](https://hub.docker.com/r/troywilson/unifi-ipsec-updater/) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-blue.svg)](https://github.com/troywilson/unifi-ipsec-updater/blob/master/LICENSE)
 
@@ -6,7 +6,7 @@ The strongSwan install on Unifi Gateways doesn't allow DNS entries for IPsec pee
 
 ## Installation
 
-1. Configure your DNS provider with A records pointing to each end of the IPsec tunnels' external IP addresses.
+1. Configure your DNS provider with A records pointing to each end of the IPsec tunnels' external IP addresses. If you only need 1 IP address to be updated that will work too.
 
 2. Create a site-to-site VPN on the Unifi controller.
 
@@ -26,6 +26,7 @@ docker run --name unifi-ipsec-updater --restart=always --detach \
   -e "PEER-DNS=peer.example.com" \
   -e "INTERVAL=60" \
   -e "ONCE=False" \
+  -e "LOG-LEVEL=INFO" \
   troywilson/unifi-ipsec-updater:latest
 ```
 
@@ -34,7 +35,7 @@ docker run --name unifi-ipsec-updater --restart=always --detach \
 | Setting | Default | Type | Description |
 | --- | --- | --- | --- |
 | HOST | unifi | string | host(name/ip) for the controller |
-| PORT | 8443 | string | port of the controller |
+| PORT | 8443 | integer | port of the controller |
 | USERNAME | admin | string | username for the controller |
 | PASSWORD | None | string | password for the controller |
 | SITE | default | string | the site on the controller |
@@ -43,6 +44,7 @@ docker run --name unifi-ipsec-updater --restart=always --detach \
 | PEER-DNS | None | string | the DNS record to lookup for the peer gateway |
 | INTERVAL | 60 | integer | interval in seconds between lookups |
 | ONCE | False | boolean | only run the update once and exit |
+| LOG-LEVEL | INFO | [DEBUG INFO WARNING ERROR CRITICAL] | logging level |
 
 ### Secrets
 
