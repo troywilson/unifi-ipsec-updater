@@ -9,7 +9,7 @@ import time
 import unificontrol
 
 __author__ = 'Troy Wilson'
-__version__ = '0.01'
+__version__ = '0.1.1'
 
 # setup args
 parser = argparse.ArgumentParser()
@@ -127,14 +127,14 @@ def updater(sc):
 					client.set_networksettings(unifi_net_id, unifi_settings)
 				except:
 					logging.warning('Error burning update to network: %s', args.get('network'))
+				else:
+					if change_local:
+						logging.info('%s(local): %s => %s', args.get('network'),
+							gwIP['local'], dnsIP['local'])
 
-				if change_local:
-					logging.info('%s(local): %s => %s', args.get('network'),
-						gwIP['local'], dnsIP['local'])
-
-				if change_peer:
-					logging.info('%s(peer): %s => %s', args.get('network'),
-						gwIP['peer'], dnsIP['peer'])
+					if change_peer:
+						logging.info('%s(peer): %s => %s', args.get('network'),
+							gwIP['peer'], dnsIP['peer'])
 			else:
 				logging.info('No changes')
 

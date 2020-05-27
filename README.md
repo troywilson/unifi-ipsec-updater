@@ -34,12 +34,12 @@ docker run --name unifi-ipsec-updater --restart=always --detach \
 
 | Setting | Default | Type | Description |
 | --- | --- | --- | --- |
-| HOST | unifi | string | host(name/ip) for the controller |
+| HOST | unifi | string | host(name/IP) for the controller |
 | PORT | 8443 | integer | port of the controller |
 | USERNAME | admin | string | username for the controller |
 | PASSWORD | None | string | password for the controller |
-| SITE | default | string | the site on the controller |
-| NETWORK | None | string| the VPN network to update |
+| SITE | default | string | the site name on the controller |
+| NETWORK | None | string| the VPN network name to update |
 | LOCAL-DNS | None | string | the DNS record to lookup for the local gateway |
 | PEER-DNS | None | string | the DNS record to lookup for the peer gateway |
 | INTERVAL | 60 | integer | interval in seconds between lookups |
