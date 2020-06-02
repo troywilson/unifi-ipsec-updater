@@ -9,7 +9,7 @@ import time
 import unificontrol
 
 __author__ = 'Troy Wilson'
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 # setup args
 parser = argparse.ArgumentParser()
@@ -40,7 +40,7 @@ args = vars(parser.parse_args())
 
 # setup logging
 log_num = args.get('log_level', 'INFO')
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', level=log_num)
+logging.basicConfig(format='%(levelname)s: %(message)s', level=log_num)
 
 # read settings from file
 file_prefix = 'FILE_'

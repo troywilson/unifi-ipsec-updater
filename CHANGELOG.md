@@ -1,5 +1,9 @@
 
-## 0.1.1 ()
+## 0.1.2 (June 2, 2020)
+
+* Removed datetime from Logging
+
+## 0.1.1 (May 27, 2020)
 
 * Bugfixes
 * Readme changes
