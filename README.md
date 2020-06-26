@@ -1,6 +1,6 @@
 # Unifi IPsec Updater
 
-[![Build Status](https://travis-ci.org/troywilson/unifi-ipsec-updater.svg?branch=master)](https://travis-ci.org/troywilson/unifi-ipsec-updater) [![Docker Pulls](https://img.shields.io/docker/pulls/troywilson/unifi-ipsec-updater.svg)](https://hub.docker.com/r/troywilson/unifi-ipsec-updater/) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-blue.svg)](https://github.com/troywilson/unifi-ipsec-updater/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/troywilson/unifi-ipsec-updater.svg?branch=master)](https://travis-ci.org/troywilson/unifi-ipsec-updater) [![Requirements Status](https://requires.io/github/troywilson/unifi-ipsec-updater/requirements.svg?branch=master)](https://requires.io/github/troywilson/unifi-ipsec-updater/requirements/?branch=master) [![Docker Pulls](https://img.shields.io/docker/pulls/troywilson/unifi-ipsec-updater.svg)](https://hub.docker.com/r/troywilson/unifi-ipsec-updater/) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-blue.svg)](https://github.com/troywilson/unifi-ipsec-updater/blob/master/LICENSE)
 
 The strongSwan install on Unifi Gateways doesn't allow DNS entries for IPsec peering. This image gets around this restriction by querying DNS records to update a site-to-site IPsec VPN on the controller.
 
