@@ -7,5 +7,5 @@
 # to list outdated packages
 # pip list --outdated --format=freeze
 
-dnspython==2.6.1
+dnspython==2.9.0
 unificontrol==0.2.7
